@@ -4,11 +4,11 @@ class Ligth extends Component {
     render() {
         const {lightColor} = this.props;
         const {lightActive} = this.props;
-        console.log(lightColor,'light');
-        console.log(lightActive, "active")
+        //console.log(lightActive);
         let className = "light " + lightColor.color;
-        //lightActive === lightColor ? className = "light " + lightColor.color + " active" :  className = "light " + lightColor.color
-        //console.log(lightColor);
+        if(lightActive === lightColor.color){
+            className += " active";
+        }
         return (
             <div className={className}>
                

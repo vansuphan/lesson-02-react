@@ -1,4 +1,25 @@
-.mini-item-done span {
-    text-decoration: line-through;
-    opacity: 0.3;
+.mini-item {
+    display: flex;
+    padding: 10px;
+    font-size: 20px;
+    margin: 5px;
+    min-width: 300px;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    img {
+        max-width: 30px;
+        max-height: 30px;
+        opacity: 0.3;
+    }
+    span {
+        margin: 0 10px;
+    }
+}
+.mini-item-done {
+    img {
+        opacity: 1;
+    }
+    span {
+        text-decoration: line-through;
+        opacity: 0.3;
+    }
 }

@@ -8,18 +8,18 @@ class TrafficLight extends Component {
     constructor(props){
         super(props);
         this.lightColor = [
-            {color : "red", status : "off"},
-            {color : "yellow", status : "off"},
-            {color : "green", status : "off"}
+            {color : "red"},
+            {color : "yellow"},
+            {color : "green"}
         ]
         this.state = {
-            lightActive : red
+            lightActive : 'red'
         };
-        this.getNextColor = this.getNextColor.bind(this);
-        setInterval(()=>{
-            this.state.lightActive = this.getNextColor(this.state.lightActive);
-            
-        },1000);
+        setInterval(() => {
+            this.setState({
+                lightActive: this.getNextColor(this.state.lightActive),    
+            });
+        }, 1500);
     }
 
     getNextColor(color){
@@ -34,12 +34,15 @@ class TrafficLight extends Component {
     }
     render() {
         return (
-            console.log(this.state.lightActive),
+            
             <div className="traffic-light">
                 <h3>Tranffic Light</h3>
                 {
                     this.lightColor.map((value,index)=>
-                        <Light lightActive = {this.state.lightActive} lightColor = {value} key={index}></Light>
+                        <Light 
+                        lightActive = {value.color === this.state.lightActive ? this.state.lightActive : null} 
+                        lightColor = {value} key={index}>
+                        </Light>
                     )
                 }
             </div>
