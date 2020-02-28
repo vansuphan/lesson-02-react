@@ -1,25 +1,39 @@
-.mini-item {
+.mini-item,.nothing-here {
     display: flex;
     padding: 10px;
     font-size: 20px;
     margin: 5px;
     min-width: 300px;
     border-bottom: 1px solid rgba(0,0,0,0.3);
-    img {
+    .img-done {
         max-width: 30px;
         max-height: 30px;
         opacity: 0.3;
+        cursor: pointer;
+    }
+    .img-cancel{
+        display: none;
+        max-width: 30px;
+        max-height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
     }
     span {
         margin: 0 10px;
+        min-width: 280px;
     }
 }
+.nothing-here{
+    color: #25ae88;
+}
 .mini-item-done {
-    img {
+    border-bottom: 1px solid #25ae88;
+    .img-done {
         opacity: 1;
     }
     span {
         text-decoration: line-through;
+        color: #25ae88;
         opacity: 0.3;
     }
 }

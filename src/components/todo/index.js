@@ -1,25 +1,13 @@
 import React, { Component } from 'react';
 import './index.scss'
 import Item from './item/index';
+import FoodterItem from './foodter/index';
 
 class TodoItem extends Component {
     constructor(props){
         super(props);
         this.state = {
-            TodoItem: [
-                {
-                    miniContent : "Dan gau di choi",
-                    isComplete : false,
-                },
-                {
-                    miniContent : "Dan gau di cong vien",
-                    isComplete : false
-                },
-                {
-                    miniContent : "Dan gau di khach san",
-                    isComplete : true
-                }
-            ],
+            TodoItem: [],  //data { miniContent : " Dắt gấu đi chơi ", isComplete: false }
             newItem : ""
         }
         this.onKeyUp= this.onKeyUp.bind(this);
@@ -39,6 +27,18 @@ class TodoItem extends Component {
                 ]
             })
             //console.log("hi", TodoItem);
+        }
+    }
+    onClickCancel(item){
+        return (event)=>{
+            const {TodoItem} = this.state;
+            const index = TodoItem.indexOf(item);
+            this.setState({
+                TodoItem: [
+                    ...TodoItem.slice(0,index),
+                    ...TodoItem.slice(index +1)
+                ]
+            })
         }
     }
     onKeyUp(event){
@@ -66,7 +66,7 @@ class TodoItem extends Component {
         const {TodoItem, newItem} = this.state;
         return (
             <div id="todolist">
-                <h3 className = 'h3-title'>Todo List</h3>
+                <h2 className = 'h2-title'>Todos</h2>
                 <input 
                     type='text' 
                     className="input-add-item" 
@@ -80,11 +80,22 @@ class TodoItem extends Component {
                     <Item 
                         content={item} 
                         key={index} 
-                        onClick = {this.onItemClick(item)}>
+                        onClickDone = {this.onItemClick(item)}
+                        onClickCancel ={this.onClickCancel(item)}
+                    >
                     </Item>
                     ))
                 }
-                {TodoItem.length === 0 && <p>Nothig here</p>}
+                {
+                    TodoItem.length === 0 && <p className="nothing-here">Nothing here</p>
+                }
+                {
+                    TodoItem.length > 0 && 
+                    <FoodterItem
+                        itemsUndone={(TodoItem.map((value)=>value.isComplete===false)).length}
+                    >
+                    </FoodterItem>
+                }
             </div>
         );
     }
