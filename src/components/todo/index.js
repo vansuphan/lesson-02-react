@@ -62,6 +62,15 @@ class TodoItem extends Component {
             newItem: event.target.value
         })
     }
+    /// Click foodter
+
+    // onClickAllItems(event){
+    //     return (TodoList)=>{
+    //         return TodoItem.filter((value)=>{
+    //             return value.isComplete === true;
+    //         }).length;
+    //     }
+    // }
     render() {
         const {TodoItem, newItem} = this.state;
         return (
@@ -81,7 +90,7 @@ class TodoItem extends Component {
                         content={item} 
                         key={index} 
                         onClickDone = {this.onItemClick(item)}
-                        onClickCancel ={this.onClickCancel(item)}
+                        onClickCancel = {this.onClickCancel(item)}
                     >
                     </Item>
                     ))
@@ -91,10 +100,13 @@ class TodoItem extends Component {
                 }
                 {
                     TodoItem.length > 0 && 
-                    <FoodterItem
-                        itemsUndone={(TodoItem.map((value)=>value.isComplete===false)).length}
-                    >
-                    </FoodterItem>
+                        <FoodterItem
+                            itemsUndone={(TodoItem.filter((value)=>value.isComplete===false)).length}
+                            // onClickAllItems ={this.onClickAllItems()}
+                            // onClickActiveItems ={this.onClickActiveItems()}
+                            // onClickCompleteItems ={this.onClickCompleteItems()}
+                        >
+                        </FoodterItem>
                 }
             </div>
         );

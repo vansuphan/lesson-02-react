@@ -5,6 +5,10 @@
     margin: 5px;
     min-width: 300px;
     border-bottom: 1px solid rgba(0,0,0,0.3);
+    &:hover .img-cancel{
+        display: block;
+        opacity: 0.5;
+    }
     .img-done {
         max-width: 30px;
         max-height: 30px;
@@ -17,10 +21,13 @@
         max-height: 30px;
         border-radius: 50%;
         cursor: pointer;
+        &:hover{
+            opacity: 1;
+        }
     }
     span {
         margin: 0 10px;
-        min-width: 280px;
+        min-width: 270px;
     }
 }
 .nothing-here{
