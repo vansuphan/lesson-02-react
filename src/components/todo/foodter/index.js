@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './index.scss';
+import { Link } from 'react-router-dom';
 class FoodterItem extends Component {
     render() {
         const {itemsUndone} = this.props;
@@ -9,13 +10,16 @@ class FoodterItem extends Component {
                 <span className="foodter-item-letf count-items-undone"> {itemsUndone} item left</span>
                 <span className="foodter-item all-items"
                     // onClick= {onClickAllItems}
-                >All</span>
+                ><Link to='/todos/'>All</Link>
+                </span>
                 <span className="foodter-item active-items"
                     //onClick= {onClickActiveItems}
-                >Actives</span>
+                ><Link to='/todos/active'>Actives</Link>
+                </span>
                 <span className="foodter-item complete-items"
                     //onClick={onClickCompleteItems}
-                >Complete</span>
+                ><Link to='/todos/complete'>Completes</Link>
+                </span>
             </div>
         );
     }

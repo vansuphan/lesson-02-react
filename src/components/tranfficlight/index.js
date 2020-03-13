@@ -34,7 +34,6 @@ class TrafficLight extends Component {
     }
     render() {
         return (
-            
             <div className="traffic-light">
                 <h3>Tranffic Light</h3>
                 {

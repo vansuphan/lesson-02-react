@@ -7,7 +7,7 @@ class TodoItem extends Component {
     constructor(props){
         super(props);
         this.state = {
-            TodoItem: [],  //data { miniContent : " Dắt gấu đi chơi ", isComplete: false }
+            TodoItem: [],  //data { miniContent : " Dắt gấu đi chơi ", isComplete: false || true}
             newItem : ""
         }
         this.onKeyUp= this.onKeyUp.bind(this);
@@ -26,7 +26,6 @@ class TodoItem extends Component {
                     ...TodoItem.slice(index +1)
                 ]
             })
-            //console.log("hi", TodoItem);
         }
     }
     onClickCancel(item){
@@ -64,13 +63,6 @@ class TodoItem extends Component {
     }
     /// Click foodter
 
-    // onClickAllItems(event){
-    //     return (TodoList)=>{
-    //         return TodoItem.filter((value)=>{
-    //             return value.isComplete === true;
-    //         }).length;
-    //     }
-    // }
     render() {
         const {TodoItem, newItem} = this.state;
         return (
@@ -92,8 +84,7 @@ class TodoItem extends Component {
                         onClickDone = {this.onItemClick(item)}
                         onClickCancel = {this.onClickCancel(item)}
                     >
-                    </Item>
-                    ))
+                    </Item>))
                 }
                 {
                     TodoItem.length === 0 && <p className="nothing-here">Nothing here</p>
@@ -104,7 +95,7 @@ class TodoItem extends Component {
                             itemsUndone={(TodoItem.filter((value)=>value.isComplete===false)).length}
                             // onClickAllItems ={this.onClickAllItems()}
                             // onClickActiveItems ={this.onClickActiveItems()}
-                            // onClickCompleteItems ={this.onClickCompleteItems()}
+                            // onClickCompleteItem s ={this.onClickCompleteItems()}
                         >
                         </FoodterItem>
                 }
